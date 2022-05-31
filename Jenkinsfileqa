@@ -1,0 +1,29 @@
+pipeline{
+
+agent any  // it run the job in the master instance
+
+tools{
+	maven "maven3.8.5"
+}
+
+
+stages{	
+// Get the code from github repo
+	stage('checkoutCode'){
+		steps{
+				git credentialsId: '569516ac-04f0-458a-b85b-151924de182f', url: 'https://github.com/DevOpsProjs/maven-web-application.git'
+		}
+	} // checkoutCode closing
+
+	// Build stage
+	/*
+	stage('Build'){
+		steps{
+			sh "mvn clean package"
+		}
+	} */ // build stage closing
+	
+
+} // stages closing
+
+} // pipeline closing
